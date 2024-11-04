@@ -4,26 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Spooky Ghost</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Spooky Ghosts</title>
 </head>
 
 <body>
     <div id="container">
-        <div id="spooky">
-            <div id="body">
-                <div id="eyes"></div>
-                <div id="mouth"></div>
-                <div id="feet">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+        <div class="ghost" style="left: 20%; animation-delay: 0s;">
+            <div id="eyes">
+                <div class="eyes"></div>
+                <div class="eyes"></div>
             </div>
+            <div class="mouth"></div>
+            <div class="shadow"></div>
         </div>
-        <div id="shadow"></div>
+        <div class="ghost" style="left: 50%; animation-delay: 0.5s;">
+            <div id="eyes">
+                <div class="eyes"></div>
+                <div class="eyes"></div>
+            </div>
+            <div class="mouth"></div>
+            <div class="shadow"></div>
+        </div>
+        <div class="ghost" style="left: 80%; animation-delay: 1s;">
+            <div id="eyes">
+                <div class="eyes"></div>
+                <div class="eyes"></div>
+            </div>
+            <div class="mouth"></div>
+            <div class="shadow"></div>
+        </div>
     </div>
+    <audio id="ghostSound" src="ghost.wav" preload="auto"></audio>
+    <script>
+        const ghosts = document.querySelectorAll('.ghost');
+        ghosts.forEach(ghost => {
+            ghost.addEventListener('mouseover', () => {
+                document.getElementById('ghostSound').play();
+                ghost.style.transform = 'scale(1.1)';
+            });
+            ghost.addEventListener('mouseout', () => {
+                ghost.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 
 </html>
